@@ -1,0 +1,29 @@
+.carousel-block{
+    background: #3C3255;
+    height: 350px;
+}
+
+.carousel-card{
+    height: 300px;
+    color: #fff;
+    line-height: 160px;
+    text-align: center;
+    overflow: hidden;
+    z-index: 3;
+}
+.carousel-image{
+    overflow: hidden;
+}
+.carousel-title{
+    height: 300px;
+    width: 100%;
+    z-index: 5;
+    font-size: 30px;
+    color: #fff;
+    position: absolute;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-transform: uppercase;
+}
