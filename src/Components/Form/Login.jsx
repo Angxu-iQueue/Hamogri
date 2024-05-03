@@ -4,6 +4,7 @@ import './Login.css'
 export const Login = () => {
   return (
     <div>
+        
         <div className="login">
             <div className="login-card">
             <h2>Login</h2>
@@ -13,11 +14,10 @@ export const Login = () => {
                 <input type="text" placeholder="Enter Username" name="uname"/><br/>
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required/><br/>
-
-                <button type="submit">Login</button>
                 <label>
                 <input type="checkbox" name="remember"/> Remember me
                 </label>
+                <button type="submit">Login</button>
                 </div>
             </form>
             </div>
