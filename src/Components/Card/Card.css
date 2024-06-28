@@ -1,0 +1,72 @@
+
+
+.product-cards{
+    display: flex;
+    margin: 40px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 20px;
+    
+}
+.backdrop {
+    display: flex;
+    justify-content: center;
+    width: calc(25% - 25px);
+  }
+
+.p-photo{
+  display: flex;
+  width: 10rem;
+  height: 10rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+
+.product-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+  padding-bottom: 3rem;
+  background-color: rgb(122, 122, 122, 80%); 
+  border-radius: 10px;
+  box-shadow:  0 4px 8px  rgba(0, 0, 0, 0.5);
+  min-height: 300px; 
+  /* rgba(105, 96, 128, 80%) */
+}
+.p-name, .p-price {
+    text-align: center;
+    margin: 10px 0;
+  }
+  
+  @media (max-width: 768px) {
+    .backdrop {
+      width: calc(50% - 10px); /* For 2 cards per row on small screens */
+    }
+  }
+  
+  /* Optional: Additional styles for very small screens */
+  @media (max-width: 480px) {
+    .backdrop {
+      width: calc(100% - 10px); /* For 1 card per row on very small screens */
+    }
+  }
+
+
+  .p-cart{
+    position: absolute; 
+    bottom: 10px; 
+    left: 10px;
+    border-radius: 5px;
+    border: 1px;
+    padding: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    position: absolute;
+  }
+

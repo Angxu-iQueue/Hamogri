@@ -1,8 +1,9 @@
 import React from 'react'
+import Card from '../Components/Card/Card'
 
 const Products = () => {
   return (
-    <div>Products</div>
+    <Card/>
   )
 }
 
