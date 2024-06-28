@@ -1,36 +1,43 @@
-.carousel-block{
+.carousel-block {
     background: #3C3255;
     height: 350px;
+    overflow: hidden;
+    position: relative;
 }
 
-.carousel-card{
+.carousel-card {
     margin-top: 25px;
     height: 300px;
     color: #fff;
-    line-height: 160px;
     text-align: center;
     overflow: hidden;
     z-index: 3;
 }
-.carousel-img{
-    width: 300px;
-    height: auto;
-    object-fit: cover;
-    margin-left: 10%;
-  
 
-
-}
-.carousel-title{
-    height: 300px;
+.carousel-img {
     width: 100%;
-    z-index: 5;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-img {
+    max-width: 100%; /* Ensure image doesn't exceed parent width */
+    max-height: 100%; /* Ensure image doesn't exceed parent height */
+    object-fit: contain; /* Adjust as per your design needs */
+    display: block; /* Ensure image is block-level element */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+.carousel-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 30px;
     color: #fff;
-    position: absolute;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     text-transform: uppercase;
+    z-index: 5;
 }
