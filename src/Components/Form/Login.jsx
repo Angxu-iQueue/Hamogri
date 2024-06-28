@@ -21,6 +21,7 @@ function Login({ setFlag }) {
         position: "top-center",
       });
       navigate('/');
+      
     } catch (error) {
       console.log(error.message);
 

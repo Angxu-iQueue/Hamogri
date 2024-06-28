@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import { AuthProvider } from './Context/authContext';
+import { AuthProvider } from './Context/authContext/index';
 import { CartProvider } from './Context/cartcontext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
