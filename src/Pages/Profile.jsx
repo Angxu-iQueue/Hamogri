@@ -120,17 +120,16 @@ function Profile() {
 
         <div className="mb-3">
           <label>Email</label>
-          <input
+          <span
             type="email"
-            className="form-control"
-            name="email"
-            value={userData.email}
-            readOnly
-          />
+            className="form-control readonly-data"
+            name="email">
+              {userData.email}
+          </span>
         </div>
 
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn-primary">
             Save Changes
           </button>
         </div>
