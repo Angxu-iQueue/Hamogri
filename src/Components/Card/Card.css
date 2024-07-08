@@ -1,17 +1,31 @@
 
-
-.product-cards{
-    display: flex;
-    margin: 40px;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 20px;
-    
+.product-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 5%;
+  gap: 10px;
 }
+
+.search-bar {
+  display: flex;
+  width: 80%;
+  padding: 10px;
+  margin: 20px 5%;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 4px 6px rgb(122, 122, 122, 80%);
+  justify-content: center;
+}
+
 .backdrop {
     display: flex;
     justify-content: center;
     width: calc(25% - 25px);
+    background-color: rgb(122, 122, 122, 80%); 
+    border-radius: 10px;
+    box-shadow:  0 4px 8px  rgba(0, 0, 0, 0.5);
   }
 
 .p-photo{
@@ -33,9 +47,8 @@
   box-sizing: border-box;
   padding: 1rem;
   padding-bottom: 3rem;
-  background-color: rgb(122, 122, 122, 80%); 
-  border-radius: 10px;
-  box-shadow:  0 4px 8px  rgba(0, 0, 0, 0.5);
+  
+  
   min-height: 300px; 
   /* rgba(105, 96, 128, 80%) */
 }
