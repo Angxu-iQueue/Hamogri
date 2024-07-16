@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useState , useEffect , useRef } from "react";
 import { auth, db } from "../../Config/Config";
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, GeoPoint } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "./Signup.css";
@@ -14,7 +14,43 @@ function Signup({ setFlag }) {
   const [address, setAddress] = useState("");
   const [role, setRole] = useState("user");
   const [isSeller, setIsSeller] = useState(false);
+  const [location, setLocation] = useState(null); // GeoPoint state for storing latitude and longitude
+  const mapRef = useRef(null);
+  const locationInputRef = useRef(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (window.google) {
+      const map = new window.google.maps.Map(mapRef.current, {
+        center: { lat: 26.11, lng: 91.70 },
+        zoom: 8,
+      });
+
+      const marker = new window.google.maps.Marker({
+        map: map,
+        draggable: true,
+      });
+
+      map.addListener("click", (event) => {
+        marker.setPosition(event.latLng);
+        setLocation(new GeoPoint(event.latLng.lat(), event.latLng.lng()));
+      });
+
+      const autocomplete = new window.google.maps.places.Autocomplete(locationInputRef.current);
+      autocomplete.addListener("place_changed", () => {
+        const place = autocomplete.getPlace();
+        if (place.geometry) {
+          map.setCenter(place.geometry.location);
+          map.setZoom(14);
+          marker.setPosition(place.geometry.location);
+          setLocation(new GeoPoint(place.geometry.location.lat(), place.geometry.location.lng()));
+        }
+        if (place.formatted_address) {
+          setAddress(place.formatted_address);
+        }
+      });
+    }
+  }, []);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -23,12 +59,17 @@ function Signup({ setFlag }) {
       const user = userCredential.user;
       console.log(user);
       if (user) {
+
+        const geoPoint = new GeoPoint(location.latitude, location.longitude);
+
+
         await setDoc(doc(db, "User_data", user.uid), {
           email: user.email,
           firstName: fname,
           lastName: lname,
           address: address,
           role: role,
+          location: geoPoint,
         });
       }
       console.log("User Registered Successfully!!");
@@ -55,6 +96,7 @@ function Signup({ setFlag }) {
     <div className="signup-card">
     <form onSubmit={handleRegister}>
       <h3>Sign Up</h3>
+      <div className="col-left">
   <div className="name">
       <div className="mb-3">
         <label>First name</label>
@@ -110,16 +152,6 @@ function Signup({ setFlag }) {
         />
       </div>
 
-      <div className="mb-3">
-        <label>Location</label>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="location"
-          onChange={(e) => setAddress(e.target.value)}
-        />
-      </div>
-
       <div className="">
         <label>Register as seller</label>
         <input
@@ -131,12 +163,22 @@ function Signup({ setFlag }) {
         />
       </div>
 
-      <p className="forgot-password text-right">
+      </div>
+      <div className="col-right"></div>
+      <div className="mb-3">
+            <label>Select Location</label>
+            <div ref={mapRef} style={{ width: '100%', height: '400px' }}></div>
+      
+      </div>
+      <div className="bottom">
+      <p className="forgot-password">
         <button className="signup-btn" type="submit">Sign Up</button>
       </p>
-      <p className="forgot-password text-right">
+      <p className="forgot-password">
         Already registered? <button className="signup-btn" type="button" onClick={() => setFlag("Login")}>Login</button>
       </p>
+      </div>
+      
     </form>
     </div>
     </div>

@@ -1,6 +1,6 @@
 .signup{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;   
     background: rgba(255, 238, 169, 70%); 
@@ -46,4 +46,14 @@
 
 .forgot-password{
     padding:10px 20px 10px 20px;
+}
+.col-left{
+    display: flex;
+    flex-direction: column;
+    float: left;
+    width: 50%;
+}
+.col-right{
+    display: flex;
+
 }
