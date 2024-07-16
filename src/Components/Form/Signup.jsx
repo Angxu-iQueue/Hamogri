@@ -12,6 +12,8 @@ function Signup({ setFlag }) {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [address, setAddress] = useState("");
+  const [role, setRole] = useState("user");
+  const [isSeller, setIsSeller] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -26,6 +28,7 @@ function Signup({ setFlag }) {
           firstName: fname,
           lastName: lname,
           address: address,
+          role: role,
         });
       }
       console.log("User Registered Successfully!!");
@@ -39,7 +42,13 @@ function Signup({ setFlag }) {
         position: "top-center",
       });
     }
+  
   };
+  const handleCheckboxChange = (e) => {
+    setIsSeller(e.target.checked);
+    setRole(e.target.checked ? "Admin" : "user");
+  };
+  
 
   return (
   <div className="signup">
@@ -77,6 +86,7 @@ function Signup({ setFlag }) {
           onChange={(e) => setAddress(e.target.value)}
         />
       </div>
+      
 
       <div className="mb-3">
         <label>Email address</label>
@@ -97,6 +107,27 @@ function Signup({ setFlag }) {
           placeholder="Enter password"
           onChange={(e) => setPassword(e.target.value)}
           required
+        />
+      </div>
+
+      <div className="mb-3">
+        <label>Location</label>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="location"
+          onChange={(e) => setAddress(e.target.value)}
+        />
+      </div>
+
+      <div className="">
+        <label>Register as seller</label>
+        <input
+          type="checkbox"
+          className="form-control"
+          placeholder="checkbox"
+          onChange={handleCheckboxChange}
+          checked={isSeller}
         />
       </div>
 
